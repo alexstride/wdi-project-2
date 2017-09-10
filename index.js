@@ -8,8 +8,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const session = require('express-session');
-const flash = require('express-flash');
 const userAuth = require('./lib/userAuth');
+const flash = require('express-flash');
 
 
 //internal requires
@@ -23,12 +23,7 @@ mongoose.connect(dbURI, { useMongoClient: true });
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(express.static(`${__dirname}/public`));
-app.use(session({
-  secret: secret,
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(flash());
+
 
 
 //middleware setup
@@ -42,6 +37,12 @@ app.use(methodOverride(req => {
     return method;
   }
 }));
+app.use(session({
+  secret: secret,
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(flash());
 app.use(userAuth);
 
 

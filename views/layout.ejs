@@ -8,7 +8,12 @@
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <%- include ./partials/_navbar %>
-    <%- body %>
+    <div class="container">
+      <%- include ./partials/_navbar %>
+      <% for (const type in messages) { %>
+        <p class="notification is-<%= type %>"><%= messages[type] %></p>
+      <% } %>
+      <%- body %>
+    </div>
   </body>
 </html>

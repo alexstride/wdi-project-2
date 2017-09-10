@@ -16,6 +16,12 @@
       <div class="navbar-item">
         <a href="/stores">All Restaurants</a>
       </div>
+      <% if (locals.isAuthenticated) {%>
+        <div class="navbar-item">
+          <a href="stores/new">Create new restaurant</a>
+        </div>
+      <%}
+      %>
     </div>
 
     <div class="navbar-end">
