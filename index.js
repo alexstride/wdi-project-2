@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const session = require('express-session');
 const flash = require('express-flash');
+const userAuth = require('./lib/userAuth');
 
 
 //internal requires
@@ -41,6 +42,7 @@ app.use(methodOverride(req => {
     return method;
   }
 }));
+app.use(userAuth);
 
 
 

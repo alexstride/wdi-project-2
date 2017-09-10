@@ -17,13 +17,21 @@
         <a href="/stores">All Restaurants</a>
       </div>
     </div>
+
     <div class="navbar-end">
-      <div class="navbar-item">
-        <a href="/register">Register</a>
-      </div>
-      <div class="navbar-item">
-        <a href="/login">Login</a>
-      </div>
+      <% if (!locals.isAuthenticated) {%>
+        <div class="navbar-item">
+          <a href="/register">Register</a>
+        </div>
+        <div class="navbar-item">
+          <a href="/login">Login</a>
+        </div>
+      <%} else {%>
+        <div class="navbar-item">
+          <a href="/logout">Logout</a>
+        </div>
+      <%}
+      %>
     </div>
   </div>
 </nav>

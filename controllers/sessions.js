@@ -19,7 +19,12 @@ function sessionsCreate(req, res) {
     });
 }
 
+function sessionsDelete(req, res) {
+  req.session.regenerate(() => res.redirect('/'));
+}
+
 module.exports = {
   new: sessionsNew,
-  create: sessionsCreate
+  create: sessionsCreate,
+  delete: sessionsDelete
 };
