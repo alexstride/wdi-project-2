@@ -7,9 +7,12 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
+const session = require('express-session');
+const flash = require('express-flash');
+
 
 //internal requires
-const { port, dbURI } = require('./config/environment');
+const { port, dbURI, secret } = require('./config/environment');
 const routes = require('./config/routes');
 
 //connecting to database
@@ -19,6 +22,12 @@ mongoose.connect(dbURI, { useMongoClient: true });
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(express.static(`${__dirname}/public`));
+app.use(session({
+  secret: secret,
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(flash());
 
 
 //middleware setup

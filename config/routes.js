@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const stores = require('../controllers/stores');
 const registrations = require('../controllers/registrations');
+const sessions = require('../controllers/sessions');
 
 const sendText = (text) => (req, res) => res.send(text);
 
@@ -27,5 +28,8 @@ router.route('/stores/:id/edit')
 router.route('/register')
   .get(registrations.new)
   .post(registrations.create);
+
+router.route('/login')
+  .get(sessions.new);
 
 module.exports = router;
