@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const stores = require('../controllers/stores');
+
 const sendText = (text) => (req, res) => res.send(text);
 
 //HOME
@@ -7,7 +9,7 @@ router.get('/', sendText('HOME'));
 
 //INDEX
 router.route('/stores')
-  .get(sendText('INDEX'))
+  .get(stores.index)
   .post(sendText('CREATE'));
 
 router.route('/stores/new')
