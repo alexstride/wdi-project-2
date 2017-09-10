@@ -18,10 +18,9 @@ router.route('/stores/new')
 router.route('/stores/:id')
   .get(stores.show)
   .put(stores.update)
-  .delete(sendText('DELETE'));
+  .delete(stores.delete);
 
 router.route('/stores/:id/edit')
   .get(stores.edit);
-
 
 module.exports = router;

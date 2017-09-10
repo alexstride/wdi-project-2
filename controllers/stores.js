@@ -13,7 +13,11 @@ function storesShow(req, res) {
   Store
     .findById(req.params.id)
     .exec()
-    .then(store => res.render('stores/show', { store }));
+    .then(store => {
+      if(!store) res.render('error', {err: 'Could not find the record you are looking for'});
+      res.render('stores/show', { store });
+    })
+    .catch(err => res.render('error', { err }));
 }
 
 function storesNew(req, res) {
@@ -48,7 +52,12 @@ function storesUpdate(req, res) {
 }
 
 function storesDelete(req, res) {
-  
+  Store
+    .findById(req.params.id)
+    .exec()
+    .then(store => store.remove())
+    .then(() => res.redirect('/stores'))
+    .catch(err => res.render('error', { err }));
 }
 
 module.exports = {
