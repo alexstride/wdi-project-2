@@ -1,7 +1,7 @@
 <h1>All Stores</h1>
 
 <% stores.forEach(store => { %>
-  <h3><%= store.locationName %></h3>
+  <h3><a href="/stores/<%= store.id %>"><%= store.locationName %></a></h3>
   <p><%= store.address %></p>
 <% })
 %>

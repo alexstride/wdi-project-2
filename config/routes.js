@@ -10,18 +10,18 @@ router.get('/', sendText('HOME'));
 //INDEX
 router.route('/stores')
   .get(stores.index)
-  .post(sendText('CREATE'));
+  .post(stores.create);
 
 router.route('/stores/new')
-  .get(sendText('NEW'));
+  .get(stores.new);
 
 router.route('/stores/:id')
-  .get(sendText('SHOW'))
-  .put(sendText('UPDATE'))
+  .get(stores.show)
+  .put(stores.update)
   .delete(sendText('DELETE'));
 
 router.route('/stores/:id/edit')
-  .get(sendText('EDIT'));
+  .get(stores.edit);
 
 
 module.exports = router;
