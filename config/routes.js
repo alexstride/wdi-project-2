@@ -1,11 +1,12 @@
 const router = require('express').Router();
 
 const stores = require('../controllers/stores');
+const registrations = require('../controllers/registrations');
 
 const sendText = (text) => (req, res) => res.send(text);
 
 //HOME
-router.get('/', sendText('HOME'));
+router.get('/', (req, res) => res.render('home'));
 
 //INDEX
 router.route('/stores')
@@ -22,5 +23,9 @@ router.route('/stores/:id')
 
 router.route('/stores/:id/edit')
   .get(stores.edit);
+
+router.route('/register')
+  .get(registrations.new)
+  .post(registrations.create);
 
 module.exports = router;

@@ -29,6 +29,7 @@
     "run-sequence": "^1.2.2"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.0",
     "bulma": "^0.5.1",
