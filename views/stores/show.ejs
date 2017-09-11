@@ -1,6 +1,7 @@
 <h1 class="title is-1">McDonalds <%= store.locationName %></h1>
 <p><%= store.address %></p>
 <p><%= store.createdByUser %></p>
+<a href="/stores/<%= store.id %>/reviews/new"></a>
 <a href="/stores/<%= store.id %>/edit">Edit this store</a>
 <form action="/stores/<%= store.id %>" method="POST">
   <input type="hidden" name="_method" value="DELETE">
@@ -9,7 +10,7 @@
 
 <% store.reviews.forEach(review => { %>
   <div class="review">
-  <h3>Review by: <%=review.user %></h3>
+  <h3><a href="/stores/<%= store.id %>/reviews/<%= review.id %>">Review by: <%=review.user %></a></h3>
   <p>Ambience: <%= review.ambienceRating %>/10</p>
   <p>Food Quality: <%= review.foodQualityRating %>/10</p>
   <p>Customer Service: <%= review.customerServiceRating %>/10</p>

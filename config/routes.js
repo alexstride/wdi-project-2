@@ -2,6 +2,8 @@ const router = require('express').Router();
 
 const stores = require('../controllers/stores');
 const registrations = require('../controllers/registrations');
+const reviews = require('../controllers/reviews');
+
 const sessions = require('../controllers/sessions');
 const secureRoute = require('../lib/secureRoute');
 
@@ -34,5 +36,11 @@ router.route('/login')
 
 router.route('/logout')
   .get(sessions.delete);
+
+router.route('/stores/:id/reviews/new')
+  .get(reviews.new);
+
+router.route('/stores/:id/reviews/:reviewId')
+  .get(reviews.show);
 
 module.exports = router;

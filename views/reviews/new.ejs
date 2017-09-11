@@ -1,0 +1,28 @@
+<h1 class="title is-1">New Review of McDonalds <%= store.locationName %></h1>
+
+<form method="POST" action="/stores/<%= store.id %>/reviews">
+  <div class="field">
+    <label class="label">Ambience Rating: </label>
+    <div class="control">
+      <select class="select" name="ambienceRating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Address</label>
+    <div class="control">
+      <input class="input" name="address" type="text" placeholder="Address" required>
+    </div>
+  </div>
+  <button>Add</button>
+</form>
