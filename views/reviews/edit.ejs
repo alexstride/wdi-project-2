@@ -1,7 +1,7 @@
 <h1 class="title is-1">Edit Review</h1>
 
-<form method="POST" action="/stores/<%= store.id %>/reviews">
-
+<form method="POST" action="/stores/<%= store.id %>/reviews/<%= review.id %>">
+  <input type="hidden" name="_method" value="PUT">
   <div class="field">
     <label class="label">Ambience Rating: </label>
     <div class="control">
@@ -20,41 +20,18 @@
   </div>
 
   <div class="field">
-    <label class="label">Ambience Rating: </label>
-    <div class="control">
-      <select class="select" name="ambienceRating">
-        <option disabled selected>-</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select>
-    </div>
-  </div>
-
-  
-
-  <div class="field">
     <label class="label">Food Quality Rating: </label>
     <div class="control">
       <select class="select" name="foodQualityRating">
-        <option disabled selected>-</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+        <% for (let i = 0; i < 10; i++) {%>
+          <option value="<%= i %>"
+          <% if (review.foodQualityRating === i) {%>
+            selected
+          <%}
+          %>
+          ><%= i %></option>
+        <%}
+        %>
       </select>
     </div>
   </div>
@@ -63,17 +40,15 @@
     <label class="label">Customer Service Rating: </label>
     <div class="control">
       <select class="select" name="customerServiceRating">
-        <option disabled selected>-</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+        <% for (let i = 0; i < 10; i++) {%>
+          <option value="<%= i %>"
+          <% if (review.customerServiceRating === i) {%>
+            selected
+          <%}
+          %>
+          ><%= i %></option>
+        <%}
+        %>
       </select>
     </div>
   </div>
@@ -81,7 +56,7 @@
   <div class="field">
     <label class="label">Your Review: </label>
     <div class="control">
-      <textarea class="textarea" name="reviewText" rows="8" cols="80"></textarea>
+      <textarea class="textarea" name="reviewText" rows="8" cols="80"><%= review.reviewText %></textarea>
     </div>
   </div>
   <button>Add</button>
