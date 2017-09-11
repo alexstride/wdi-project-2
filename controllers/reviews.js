@@ -48,9 +48,23 @@ function reviewsEdit(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+function reviewsUpdate(req, res) {
+  Store
+    .findById(req.params.id)
+    .exec()
+    .then(store => {
+      const review = store.reviews.id(req.params.reviewId);
+      Object.assign(review, req.body);
+      return store.save();
+    })
+    .then(() => res.redirect(`/stores/${req.params.id}/reviews/${req.params.reviewId}`))
+    .catch(err => res.render('error', { err }));
+}
+
 module.exports = {
   show: reviewsShow,
   new: reviewsNew,
   create: reviewsCreate,
-  edit: reviewsEdit
+  edit: reviewsEdit,
+  update: reviewsUpdate
 };

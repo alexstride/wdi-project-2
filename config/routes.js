@@ -44,7 +44,8 @@ router.route('/stores/:id/reviews/new')
   .get(secureRoute, reviews.new);
 
 router.route('/stores/:id/reviews/:reviewId')
-  .get(reviews.show);
+  .get(reviews.show)
+  .put(reviews.update);
 
 router.route('/stores/:id/reviews/:reviewId/edit')
   .get(reviews.edit); ///MAKE THIS INTO A SECURE ROUTE AFTER TESTING!!
