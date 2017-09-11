@@ -1,4 +1,3 @@
-const User = require('../models/user');
 const Store = require('../models/store');
 
 //Of the form /stores/:id/comments/:commentId
@@ -61,10 +60,24 @@ function reviewsUpdate(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+function reviewsDelete(req, res) {
+  Store
+    .findById(req.params.id)
+    .exec()
+    .then(store => {
+      const review = store.reviews.id(req.params.reviewId);
+      review.remove();
+      return store.save();
+    })
+    .then(() => res.redirect(`/stores/${req.params.id}`))
+    .catch(err => res.render('error', { err }));
+}
+
 module.exports = {
   show: reviewsShow,
   new: reviewsNew,
   create: reviewsCreate,
   edit: reviewsEdit,
-  update: reviewsUpdate
+  update: reviewsUpdate,
+  delete: reviewsDelete
 };

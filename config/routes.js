@@ -45,7 +45,8 @@ router.route('/stores/:id/reviews/new')
 
 router.route('/stores/:id/reviews/:reviewId')
   .get(reviews.show)
-  .put(reviews.update);
+  .put(reviews.update)
+  .delete(reviews.delete);
 
 router.route('/stores/:id/reviews/:reviewId/edit')
   .get(reviews.edit); ///MAKE THIS INTO A SECURE ROUTE AFTER TESTING!!
