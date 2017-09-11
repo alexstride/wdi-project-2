@@ -37,10 +37,16 @@ router.route('/login')
 router.route('/logout')
   .get(sessions.delete);
 
+router.route('/stores/:id/reviews')
+  .post(secureRoute, reviews.create);
+
 router.route('/stores/:id/reviews/new')
-  .get(reviews.new);
+  .get(secureRoute, reviews.new);
 
 router.route('/stores/:id/reviews/:reviewId')
   .get(reviews.show);
+
+router.route('/stores/:id/reviews/:reviewId/edit')
+  .get(reviews.edit); ///MAKE THIS INTO A SECURE ROUTE AFTER TESTING!!
 
 module.exports = router;

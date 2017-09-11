@@ -1,8 +1,21 @@
 <h2>Review of <%=store.locationName %></h2>
 
-<h4>Created by <%=review.user %></h4>
+<h4>Created by <strong><%=review.user.username %></strong></h4>
 
 <p>Ambience Rating: <%= review.ambienceRating %></p>
 <p>Food Quality Rating: <%= review.foodQualityRating %></p>
 <p>Service Quality Rating: <%= review.customerServiceRating %></p>
-<%= review.reviewText %>
+<p><%= review.reviewText %></p>
+
+<% if (review.user && locals.currentUser && locals.currentUser.id === review.user.id) {%>
+  <div>
+    <a href="/stores/<%= store.id %>/reviews/<%= review.id %>/edit">Edit this review</a>
+    <form method="POST" action="/stores/<%= store.id %>/reviews/<%= review.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>Delete this review</button>
+    </form>
+  </div>
+<%} else {%>
+  <p>You do not have permission to edit this record<p>
+<%}
+%>
