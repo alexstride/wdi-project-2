@@ -20,21 +20,25 @@
   <div class="columns is-multiline">
     <% store.reviews.forEach(review => { %>
       <div class="column is-9">
+        <a href="/stores/<%= store.id %>/reviews/<%= review.id %>">
         <div class="card">
           <div class="card-content">
-            <h3><a href="/stores/<%= store.id %>/reviews/<%= review.id %>">Reviewed by:<strong>
-            <% if(review.user) {%>
-              <%=review.user.username %>
-            <%} else {%>
-              Unknown user
-            <%}
-            %></strong></a></h3>
-            <p>Ambience: <%= review.ambienceRating %>/10</p>
-            <p>Food Quality: <%= review.foodQualityRating %>/10</p>
-            <p>Customer Service: <%= review.customerServiceRating %>/10</p>
+            <div class="review-info">
+              <h3>Reviewed by:<span class="user-name">
+              <% if(review.user) {%>
+                <%=review.user.username %>
+              <%} else {%>
+                Unknown user
+              <%}
+              %></span></h3>
+              <p>Ambience: <%= review.ambienceRating %>/10</p>
+              <p>Food Quality: <%= review.foodQualityRating %>/10</p>
+              <p>Customer Service: <%= review.customerServiceRating %>/10</p>
+            </div>
             <p><%= review.reviewText %></p>
           </div>
         </div>
+        </a>
       </div>
 
     <% })

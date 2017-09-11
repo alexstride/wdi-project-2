@@ -1,4 +1,4 @@
-$background-red: #fc5032;
+$feature-red: #fc5032;
 $feature-yellow: #ffff63;
 $heading-light-grey: #e6e6e6;
 $heading-dark-grey: #363636;
@@ -15,21 +15,32 @@ $heading-dark-grey: #363636;
   }
 }
 
+
 // Styles applying to  whole page
 html {
-  background-color: $background-red;
   //begin body styles
   body {
-    color: white;
+    color: $heading-dark-grey;
 
     h1.title {
-      color: $feature-yellow;
+      color: $feature-red;
       font-family: 'Press Start 2P', cursive;
       font-size: 30px;
     }
 
-    h4.address {
-      color: $heading-light-grey;
+    h2 {
+      &.review-author {
+        color: $heading-dark-grey;
+      }
+      strong {
+        font-weight: bold;
+      }
+    }
+
+    h4 {
+      &.address {
+        color: $heading-dark-grey;
+      }
     }
 
     a {
@@ -59,25 +70,24 @@ html {
 
     //styles on the nav
     .navbar {
-      background-color: $background-red;
       a {
-        color: $feature-yellow;
+        color: $heading-dark-grey;
         &:hover {
-          color: $heading-dark-grey;
+          border-bottom: $feature-yellow;
         }
       }
 
-      .navbar-brand .navbar-item, .navbar-brand .navbar-burger {
-        color: white;
-        border-color: white;
+      .navbar-brand .navbar-item, .navbar-brand .navbar-burger, .navbar-menu .navbar-start .navbar-item, .navbar-menu .navbar-end .navbar-item {
+        color: $heading-dark-grey;
+        border-color: $heading-dark-grey;
         span {
-          background-color: white;
+          background-color: $heading-dark-grey;
         }
         &:hover {
           background-color: $feature-yellow;
-          color: black;
+          color: $heading-dark-grey;
           span {
-            background-color: black;
+            background-color: $heading-dark-grey;
           }
         }
 
@@ -88,13 +98,13 @@ html {
     form {
       .field {
         .label {
-          color: white;
+          color: $heading-dark-grey;
         }
       }
     }
     //styles on the hero
     .hero.is-success{
-      background-color: $background-red;
+      background-color: $feature-red;
       font-family: 'Press Start 2P', cursive;
       .container {
         h1.title {
@@ -116,27 +126,38 @@ html {
     .card {
       border-radius: 10px;
       min-height: 250px;
-      border: 4px solid transparent;
+      border: 3px solid $heading-light-grey;
       h3.title {
         font-size: 1.5rem;
-        border-bottom: 4px solid $feature-yellow;
+        border-bottom: 2px solid $feature-yellow;
       }
       h4 {
         margin-top: -0.5rem;
         font-size: 1rem;
       }
       &:hover {
-        border: 4px solid $feature-yellow;
-        h3.title {
-          border-bottom: 4px solid $heading-dark-grey;
-        }
+        background-color: $feature-yellow;
+        border: 3px solid $feature-yellow;
       }
 
+    }
+
+  }
+}
+
+div.review-info{
+  font-weight: bold;
+  h3 {
+    font-weight: bold;
+    .user-name {
+      color: $feature-red;
     }
   }
 }
 
-
+div.review-text {
+  padding: 20px 0;
+}
 
 
 
@@ -146,7 +167,7 @@ html {
       height: initial;
       &:hover {
         h3.title {
-          border-bottom: 4px solid white;
+          border-bottom: 4px solid $heading-dark-grey;
         }
       }
     }

@@ -1,21 +1,35 @@
-<h2>Review of <%=store.locationName %></h2>
 
-<h4>Created by <strong><%=review.user.username %></strong></h4>
+<h1 class="title">McDonald's <%=store.locationName %></h1>
+<h2 class="title is-4 review-author">Reviewed by: <strong><%=review.user.username %></strong></h2>
 
-<p>Ambience Rating: <%= review.ambienceRating %></p>
-<p>Food Quality Rating: <%= review.foodQualityRating %></p>
-<p>Service Quality Rating: <%= review.customerServiceRating %></p>
-<p><%= review.reviewText %></p>
+<div class="columns">
+  <div class="column">
+    <div class="review-info">
+      <p>Ambience Rating: <%= review.ambienceRating %></p>
+      <p>Food Quality Rating: <%= review.foodQualityRating %></p>
+      <p>Service Quality Rating: <%= review.customerServiceRating %></p>
+    </div>
+    <div class="review-text">
+      <p><%= review.reviewText %></p>
+    </div>
 
-<% if (review.user && locals.currentUser && locals.currentUser.id === review.user.id) {%>
-  <div>
-    <a href="/stores/<%= store.id %>/reviews/<%= review.id %>/edit">Edit this review</a>
-    <form method="POST" action="/stores/<%= store.id %>/reviews/<%= review.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button>Delete this review</button>
-    </form>
+    <% if (review.user && locals.currentUser && locals.currentUser.id === review.user.id) {%>
+      <div class="columns">
+        <div class="column is-2">
+          <div class="button-wrapper">
+            <a class="button is-warning" href="/stores/<%= store.id %>/reviews/<%= review.id %>/edit">Edit this review</a>
+          </div>
+        </div>
+        <div class="column">
+          <div class="button-wrapper is-2">
+            <form method="POST" action="/stores/<%= store.id %>/reviews/<%= review.id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="button is-dark enforce-center">Delete this review</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <%}
+    %>
   </div>
-<%} else {%>
-  <p>You do not have permission to edit this record<p>
-<%}
-%>
+</div>
