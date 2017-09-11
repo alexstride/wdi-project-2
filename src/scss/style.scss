@@ -1,6 +1,146 @@
+$background-red: #fc5032;
+$feature-yellow: #ffff63;
+$heading-light-grey: #e6e6e6;
+$heading-dark-grey: #363636;
+
+@keyframes blink {
+  0% {
+    color: white;
+  }
+  50% {
+    color: $feature-yellow
+  }
+  100% {
+    color: white;
+  }
+}
+
+// Styles applying to  whole page
+html {
+  background-color: $background-red;
+}
+
+a {
+  color: $heading-dark-grey;
+}
+
+//begin body styles
 body {
+  color: white;
+  h4.address {
+    color: $heading-light-grey;
+  }
+
+  div.container {
+    padding: 0 15px;
+  }
+
+  //styling on buttons
+  .button {
+    border: 3px solid transparent;
+    border-radius: 20px;
+    padding: 20px;
+    &.enforce-center {
+      flex-direction: column;
+    }
+    &:hover {
+      border: 3px solid $heading-dark-grey;
+    }
+  }
+
+  .button-wrapper {
+    margin: 10px 0;
+  }
+
+  //styles on the nav
+  .navbar {
+    background-color: $background-red;
+    a {
+      color: $feature-yellow;
+      &:hover {
+        color: $heading-dark-grey;
+      }
+    }
+    .navbar-brand .navbar-item, .navbar-brand .navbar-burger {
+      color: white;
+      border-color: white;
+      span {
+        background-color: white;
+      }
+      &:hover {
+        background-color: $feature-yellow;
+        color: black;
+        span {
+          background-color: black;
+        }
+      }
+
+    }
+  }
+
+  //styles on the hero
+  .hero.is-success{
+    background-color: $background-red;
+    font-family: 'Press Start 2P', cursive;
+    .container {
+      h1.title {
+        font-size: 100px;
+        color: $feature-yellow;
+      }
+      h2.subtitle {
+        font-size: 50px;
+        &:hover {
+          a{
+            animation: blink 0.3s ease 0s infinite;
+          }
+        }
+      }
+    }
+  }
+
+
+  h1.title {
+    color: $feature-yellow;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+  }
+
   .review {
     border: 2px solid #e6e6e6;
     border-radius: 10px;
+  }
+
+  .card {
+    border-radius: 10px;
+    height: 250px;
+    border: 4px solid transparent;
+    h3.title {
+      font-size: 1.5rem;
+      border-bottom: 4px solid $feature-yellow;
+    }
+    h4 {
+      margin-top: -0.5rem;
+      font-size: 1rem;
+    }
+    &:hover {
+      border: 4px solid $feature-yellow;
+      h3.title {
+        border-bottom: 4px solid $heading-dark-grey;
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    .card {
+      height: initial;
+      &:hover {
+        h3.title {
+          border-bottom: 4px solid white;
+        }
+      }
+    }
   }
 }

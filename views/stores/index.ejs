@@ -1,7 +1,19 @@
-<h1 class="title is-1">All Stores</h1>
+<h1 class="title is-1">Pick a restaurant...</h1>
 
-<% stores.forEach(store => { %>
-  <h3><a href="/stores/<%= store.id %>"><%= store.locationName %></a></h3>
-  <p><%= store.address %></p>
-<% })
-%>
+<div class="columns is-multiline">
+
+  <% stores.forEach(store => { %>
+    <div class="column is-one-quarter-desktop is-half-tablet">
+      <a href="/stores/<%= store.id %>">
+        <div class="card">
+          <div class="card-content">
+            <h3 class="title"><%= store.locationName %></h3>
+            <h4 class="subtitle"><%= store.address %></h4>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% })
+  %>
+
+</div>

@@ -1,32 +1,43 @@
 <h1 class="title is-1">McDonalds <%= store.locationName %></h1>
-<p><%= store.address %></p>
-<p><%= store.createdByUser %></p>
+<h4 class="title is-4 address"><%= store.address %></h4>
 
-<div>
-  <a href="/stores/<%= store.id %>/reviews/new">Review this restaurant</a>
-</div>
-<div>
-  <a href="/stores/<%= store.id %>/edit">Edit this store</a>
+<div class="button-wrapper">
+  <a class="button is-warning feature-button" href="/stores/<%= store.id %>/reviews/new">Review this restaurant</a>
 </div>
 
-<form action="/stores/<%= store.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <button>Delete this store</button>
-</form>
+<div class="button-wrapper">
+  <a class="button is-info" href="/stores/<%= store.id %>/edit">Edit this store</a>
+</div>
 
-<% store.reviews.forEach(review => { %>
-  <div class="review">
-  <h3><a href="/stores/<%= store.id %>/reviews/<%= review.id %>">Review by:
-  <% if(review.user) {%>
-    <%=review.user.username %>
-  <%} else {%>
-    Unknown user
-  <%}
-  %></a></h3>
-  <p>Ambience: <%= review.ambienceRating %>/10</p>
-  <p>Food Quality: <%= review.foodQualityRating %>/10</p>
-  <p>Customer Service: <%= review.customerServiceRating %>/10</p>
-  <p><%= review.reviewText %></p>
+<div class="button-wrapper">
+  <form action="/stores/<%= store.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="button is-dark enforce-center"><p>Delete this store</p></button>
+  </form>
+</div>
+
+<div class="container reviews-wrapper">
+  <div class="columns is-multiline">
+    <% store.reviews.forEach(review => { %>
+      <div class="column is-9">
+        <div class="card">
+          <div class="card-content">
+            <h3><a href="/stores/<%= store.id %>/reviews/<%= review.id %>">Reviewed by:<strong>
+            <% if(review.user) {%>
+              <%=review.user.username %>
+            <%} else {%>
+              Unknown user
+            <%}
+            %></strong></a></h3>
+            <p>Ambience: <%= review.ambienceRating %>/10</p>
+            <p>Food Quality: <%= review.foodQualityRating %>/10</p>
+            <p>Customer Service: <%= review.customerServiceRating %>/10</p>
+            <p><%= review.reviewText %></p>
+          </div>
+        </div>
+      </div>
+
+    <% })
+    %>
   </div>
-<% })
-%>
+</div>
