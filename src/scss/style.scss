@@ -18,119 +18,127 @@ $heading-dark-grey: #363636;
 // Styles applying to  whole page
 html {
   background-color: $background-red;
-}
+  //begin body styles
+  body {
+    color: white;
 
-a {
-  color: $heading-dark-grey;
-}
-
-//begin body styles
-body {
-  color: white;
-  h4.address {
-    color: $heading-light-grey;
-  }
-
-  div.container {
-    padding: 0 15px;
-  }
-
-  //styling on buttons
-  .button {
-    border: 3px solid transparent;
-    border-radius: 20px;
-    padding: 20px;
-    &.enforce-center {
-      flex-direction: column;
-    }
-    &:hover {
-      border: 3px solid $heading-dark-grey;
-    }
-  }
-
-  .button-wrapper {
-    margin: 10px 0;
-  }
-
-  //styles on the nav
-  .navbar {
-    background-color: $background-red;
-    a {
+    h1.title {
       color: $feature-yellow;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 30px;
+    }
+
+    h4.address {
+      color: $heading-light-grey;
+    }
+
+    a {
+      color: $heading-dark-grey;
+    }
+
+    div.container {
+      padding: 0 15px;
+    }
+
+    //styling on buttons
+    .button {
+      border: 3px solid transparent;
+      border-radius: 20px;
+      padding: 20px;
+      &.enforce-center {
+        flex-direction: column;
+      }
       &:hover {
-        color: $heading-dark-grey;
+        border: 3px solid $heading-dark-grey;
       }
     }
-    .navbar-brand .navbar-item, .navbar-brand .navbar-burger {
-      color: white;
-      border-color: white;
-      span {
-        background-color: white;
-      }
-      &:hover {
-        background-color: $feature-yellow;
-        color: black;
-        span {
-          background-color: black;
+
+    .button-wrapper {
+      margin: 10px 0;
+    }
+
+    //styles on the nav
+    .navbar {
+      background-color: $background-red;
+      a {
+        color: $feature-yellow;
+        &:hover {
+          color: $heading-dark-grey;
         }
       }
 
-    }
-  }
-
-  //styles on the hero
-  .hero.is-success{
-    background-color: $background-red;
-    font-family: 'Press Start 2P', cursive;
-    .container {
-      h1.title {
-        font-size: 100px;
-        color: $feature-yellow;
-      }
-      h2.subtitle {
-        font-size: 50px;
+      .navbar-brand .navbar-item, .navbar-brand .navbar-burger {
+        color: white;
+        border-color: white;
+        span {
+          background-color: white;
+        }
         &:hover {
-          a{
-            animation: blink 0.3s ease 0s infinite;
+          background-color: $feature-yellow;
+          color: black;
+          span {
+            background-color: black;
+          }
+        }
+
+      }
+    }
+
+    //form styles
+    form {
+      .field {
+        .label {
+          color: white;
+        }
+      }
+    }
+    //styles on the hero
+    .hero.is-success{
+      background-color: $background-red;
+      font-family: 'Press Start 2P', cursive;
+      .container {
+        h1.title {
+          font-size: 100px;
+          color: $feature-yellow;
+        }
+        h2.subtitle {
+          font-size: 50px;
+          &:hover {
+            a{
+              animation: blink 0.3s ease 0s infinite;
+            }
           }
         }
       }
     }
-  }
 
-
-  h1.title {
-    color: $feature-yellow;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 30px;
-  }
-
-  .review {
-    border: 2px solid #e6e6e6;
-    border-radius: 10px;
-  }
-
-  .card {
-    border-radius: 10px;
-    height: 250px;
-    border: 4px solid transparent;
-    h3.title {
-      font-size: 1.5rem;
-      border-bottom: 4px solid $feature-yellow;
-    }
-    h4 {
-      margin-top: -0.5rem;
-      font-size: 1rem;
-    }
-    &:hover {
-      border: 4px solid $feature-yellow;
+    //styles relating to cards
+    .card {
+      border-radius: 10px;
+      min-height: 250px;
+      border: 4px solid transparent;
       h3.title {
-        border-bottom: 4px solid $heading-dark-grey;
+        font-size: 1.5rem;
+        border-bottom: 4px solid $feature-yellow;
       }
-    }
+      h4 {
+        margin-top: -0.5rem;
+        font-size: 1rem;
+      }
+      &:hover {
+        border: 4px solid $feature-yellow;
+        h3.title {
+          border-bottom: 4px solid $heading-dark-grey;
+        }
+      }
 
+    }
   }
 }
+
+
+
+
 
 @media screen and (max-width: 768px) {
   body {

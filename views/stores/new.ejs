@@ -1,17 +1,21 @@
 <h1 class="title is-1">Add a New Store</h1>
 
-<form method="POST" action="/stores">
-  <div class="field">
-    <label class="label">Store Location Name</label>
-    <div class="control">
-      <input class="input" name="locationName" type="text" placeholder="Location Name" required>
-    </div>
+<div class="columns">
+  <div class="column is-half-desktop">
+    <form method="POST" action="/stores">
+      <div class="field">
+        <label class="label">Store Location Name</label>
+        <div class="control">
+          <input class="input" name="locationName" type="text" required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Address</label>
+        <div class="control">
+          <input class="input" name="address" type="text" required>
+        </div>
+      </div>
+      <button class="button is-info enforce-center">Add</button>
+    </form>
   </div>
-  <div class="field">
-    <label class="label">Address</label>
-    <div class="control">
-      <input class="input" name="address" type="text" placeholder="Address" required>
-    </div>
-  </div>
-  <button>Add</button>
-</form>
+</div>
