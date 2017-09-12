@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <% if (locals.currentUser.id === comment.poster.id || locals.currentUser.id === review.user.id) {%>
+      <% if (locals.isAuthenticated && (locals.currentUser.id === comment.poster.id || locals.currentUser.id === review.user.id)) {%>
         <div class="media-right">
           <form action="/stores/<%= store.id %>/reviews/<%= review.id %>/comments/<%= comment.id %>" method="POST">
             <input type="hidden" name="_method" value="DELETE"/>

@@ -8,7 +8,6 @@ function reviewsShow(req, res) {
     .exec()
     .then(store => {
       const review = store.reviews.id(req.params.reviewId);
-      console.log("Contents of review passed through to page", review);
       res.render('reviews/show', { review, store });
     })
     .catch(err => res.render('error', { err }));
