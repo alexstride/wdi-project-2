@@ -4,6 +4,17 @@ $heading-light-grey: #e6e6e6;
 $heading-dark-grey: #363636;
 $bulma-blue: hsl(217, 71%, 53%);
 
+@import "bulma/sass/utilities/initial-variables";
+
+$primary: $feature-red;
+$warning: $feature-yellow;
+$family-serif: 'Playfair Display', serif;
+$family-primary: $family-serif;
+
+@import "bulma/bulma";
+
+
+
 @keyframes blink {
   0% {
     color: white;
@@ -20,6 +31,10 @@ $bulma-blue: hsl(217, 71%, 53%);
   color: $bulma-blue;
 }
 
+html body div.nav-container.container {
+  padding: 0;
+}
+
 // Styles applying to  whole page
 html {
   //begin body styles
@@ -28,9 +43,15 @@ html {
 
     h1.title {
       color: $feature-red;
-      font-family: 'Press Start 2P', cursive;
+      font-family: 'Press Start 2P', sans-serif;
       font-size: 30px;
       padding-top: 20px;
+      a {
+        color: inherit;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
     h2 {
@@ -53,7 +74,7 @@ html {
     }
 
     div.container {
-      padding: 0 15px;
+      padding: 0 15px 20px 15px;
     }
 
     //styling on buttons
@@ -93,7 +114,7 @@ html {
       .navbar-brand .navbar-item {
         font-size: 2rem;
         img {
-          height: 200%;
+          height: 100%;
         }
       }
       .navbar-brand .navbar-item, .navbar-brand .navbar-burger, .navbar-menu .navbar-start .navbar-item, .navbar-menu .navbar-end .navbar-item {

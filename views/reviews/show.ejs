@@ -1,5 +1,5 @@
 
-<h1 class="title">McDonald's <%=store.locationName %></h1>
+<h1 class="title">Review: <a href="/stores/<%=store.id%>">McDonald's <%=store.locationName %></a></h1>
 <h2 class="title is-4 review-author">Reviewed by: <span class="review-username">
 <% if (review.user) {%>
   <a href="#"><%=review.user.username %></a>
@@ -22,17 +22,25 @@
 
     <% if (review.user && locals.currentUser && locals.currentUser.id === review.user.id) {%>
       <div class="columns">
-        <div class="column is-2">
-          <div class="button-wrapper">
-            <a class="button is-warning" href="/stores/<%= store.id %>/reviews/<%= review.id %>/edit">Edit this review</a>
+        <div class="column is-3-desktop is-4-tablet">
+          <div class="level">
+            <div class="level-item">
+              <div class="button-wrapper">
+                <a class="button is-warning" href="/stores/<%= store.id %>/reviews/<%= review.id %>/edit">Edit this review</a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="column">
-          <div class="button-wrapper is-2">
-            <form method="POST" action="/stores/<%= store.id %>/reviews/<%= review.id %>">
-              <input type="hidden" name="_method" value="DELETE">
-              <button class="button is-dark enforce-center">Delete this review</button>
-            </form>
+        <div class="column is-3-desktop is-4-tablet">
+          <div class="level">
+            <div class="level-item">
+              <div class="button-wrapper">
+                <form method="POST" action="/stores/<%= store.id %>/reviews/<%= review.id %>">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="button is-dark enforce-center">Delete this review</button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
