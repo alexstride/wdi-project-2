@@ -1,9 +1,9 @@
 <% if (review.ambienceRating && review.customerServiceRating && review.foodQualityRating) {%>
-  <h1 class="title is-1">Edit Review</h1>
+  <h1 class="title is-size-2-tablet is-size-4-mobile">Edit Review</h1>
   <form method="POST" action="/stores/<%= store.id %>/reviews/<%= review.id %>">
     <input type="hidden" name="_method" value="PUT">
 <%} else {%>
-  <h1 class="title is-1">Fix Review</h1>
+  <h1 class="title is-size-2-tablet is-size-4-mobile">Fix Review</h1>
   <form method="POST" action="/stores/<%= store.id %>/reviews">
 <%}
 %>
