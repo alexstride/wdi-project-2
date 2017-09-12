@@ -162,6 +162,13 @@ html {
               }
             }
           }
+          &.mobile {
+            font-size: 20px;
+            a {
+              color: $feature-yellow;
+            }
+            display: none;
+          }
         }
       }
     }
@@ -209,12 +216,9 @@ div.review-text {
   html {
     //begin body styles
     body {
-      color: $heading-dark-grey;
-
       h1.title {
-        color: $feature-red;
         font-family: 'Press Start 2P', sans-serif;
-        font-size: 30px;
+        font-size: 18px;
         padding-top: 20px;
         a {
           color: inherit;
@@ -268,68 +272,23 @@ div.review-text {
         margin: 10px 0;
       }
 
-      //styles on the nav
-      .navbar {
-        a {
-          color: $heading-dark-grey;
-          &:hover {
-            border-bottom: $feature-yellow;
-          }
-          .navbar-brand {
-            .navbar-item {
-
-            }
-          }
-        }
-        .navbar-brand .navbar-item {
-          font-size: 2rem;
-          img {
-            height: 100%;
-          }
-        }
-        .navbar-brand .navbar-item, .navbar-brand .navbar-burger, .navbar-menu .navbar-start .navbar-item, .navbar-menu .navbar-end .navbar-item {
-          color: $heading-dark-grey;
-          border-color: $heading-dark-grey;
-          &:hover {
-            background-color: $feature-yellow;
-            color: $heading-dark-grey;
-          }
-
-        }
-      }
-
-      //form styles
-      form {
-        .field {
-          .label {
-            color: $heading-dark-grey;
-          }
-        }
-      }
       //styles on the hero
       .hero.is-success{
-        background-color: $feature-red;
-        font-family: 'Press Start 2P', sans-serif;
         .container {
           h1.title {
             font-size: 40px;
-            color: $feature-yellow;
           }
           h2.subtitle {
             &.tagline{
               font-size: 35px;//changed
               padding: 20px 0;//changed
-              margin-bottom: 0;
             }
 
             &.desktop{
               display: none;
             }
             &.mobile{
-              font-size: 20px;
-              a {
-                color: $feature-yellow;
-              }
+              display: initial;
             }
           }
         }
@@ -353,17 +312,6 @@ div.review-text {
           border: 3px solid $feature-yellow;
         }
 
-      }
-
-    }
-  }
-
-  div.review-info{
-    font-weight: bold;
-    h3 {
-      font-weight: bold;
-      .user-name {
-        color: $feature-red;
       }
     }
   }
