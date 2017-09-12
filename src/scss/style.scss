@@ -228,24 +228,6 @@ div.review-text {
         }
       }
 
-      h2 {
-        &.review-author {
-          color: $heading-dark-grey;
-        }
-        strong {
-          font-weight: bold;
-        }
-      }
-
-      h4 {
-        &.address {
-          color: $heading-dark-grey;
-        }
-      }
-
-      a {
-        color: $bulma-blue;
-      }
 
       div.container {
         padding: 0 15px 20px 15px;
@@ -256,18 +238,7 @@ div.review-text {
         border: 3px solid transparent;
         border-radius: 20px;
         padding: 20px;
-        &.enforce-center {
-          flex-direction: column;
-        }
-
-        &.is-warning {
-          background-color: $feature-yellow;
-          &:hover {
-            background-color: darken($feature-yellow, 20%);
-          }
-        }
       }
-
       .button-wrapper {
         margin: 10px 0;
       }
