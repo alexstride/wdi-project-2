@@ -1,34 +1,37 @@
 <h1 class="title is-1">Regsiter for an Account</h1>
+<div class="columns">
+  <div class="column is-half-desktop">
+    <form method="POST" action="/register">
 
-<form method="POST" action="/register">
+      <div class="field">
+        <label class="label">Choose a username</label>
+        <div class="control">
+          <input class="input" name="username" type="text" required>
+        </div>
+      </div>
 
-  <div class="field">
-    <label class="label">Choose a username</label>
-    <div class="control">
-      <input class="input" name="username" type="text" required>
-    </div>
+      <div class="field">
+        <label class="label">Enter email address</label>
+        <div class="control">
+          <input class="input" name="email" type="text" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Enter password</label>
+        <div class="control">
+          <input class="input" name="password" type="password" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Confirm password</label>
+        <div class="control">
+          <input class="input" name="passwordConfirmation" type="password" required>
+        </div>
+      </div>
+
+      <button class="button is-info enforce-center">Add</button>
+    </form>
   </div>
-
-  <div class="field">
-    <label class="label">Enter email address</label>
-    <div class="control">
-      <input class="input" name="email" type="text" required>
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">Enter password</label>
-    <div class="control">
-      <input class="input" name="password" type="password" required>
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">Confirm password</label>
-    <div class="control">
-      <input class="input" name="passwordConfirmation" type="password" required>
-    </div>
-  </div>
-
-  <button>Add</button>
-</form>
+</div>

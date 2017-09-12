@@ -1,20 +1,23 @@
 <h1 class="title is-1">McDonalds <%= store.locationName %></h1>
 <h4 class="title is-4 address"><%= store.address %></h4>
 
-<div class="button-wrapper">
-  <a class="button is-warning feature-button" href="/stores/<%= store.id %>/reviews/new">Review this restaurant</a>
+<div class="columns">
+  <div class="button-wrapper column is-3">
+    <a class="button is-warning feature-button" href="/stores/<%= store.id %>/reviews/new">Review this restaurant</a>
+  </div>
+
+  <div class="button-wrapper column is-3">
+    <a class="button is-info" href="/stores/<%= store.id %>/edit">Edit this store</a>
+  </div>
+
+  <div class="button-wrapper column is-3">
+    <form action="/stores/<%= store.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="button is-dark enforce-center"><p>Delete this store</p></button>
+    </form>
+  </div>
 </div>
 
-<div class="button-wrapper">
-  <a class="button is-info" href="/stores/<%= store.id %>/edit">Edit this store</a>
-</div>
-
-<div class="button-wrapper">
-  <form action="/stores/<%= store.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <button class="button is-dark enforce-center"><p>Delete this store</p></button>
-  </form>
-</div>
 
 <div class="container reviews-wrapper">
   <div class="columns is-multiline">

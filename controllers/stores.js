@@ -15,7 +15,6 @@ function storesShow(req, res) {
     .populate('reviews.user')
     .exec()
     .then(store => {
-      console.log(store);
       if(!store) res.render('error', {err: 'Could not find the record you are looking for'});
       res.render('stores/show', { store });
     })
