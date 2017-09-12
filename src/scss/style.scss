@@ -15,7 +15,6 @@ $heading-dark-grey: #363636;
   }
 }
 
-
 // Styles applying to  whole page
 html {
   //begin body styles
@@ -79,20 +78,23 @@ html {
         &:hover {
           border-bottom: $feature-yellow;
         }
-      }
+        .navbar-brand {
+          .navbar-item {
 
+          }
+        }
+      }
+      .navbar-brand .navbar-item {
+        span {
+          background-image: url("../assets/burger.png");
+        }
+      }
       .navbar-brand .navbar-item, .navbar-brand .navbar-burger, .navbar-menu .navbar-start .navbar-item, .navbar-menu .navbar-end .navbar-item {
         color: $heading-dark-grey;
         border-color: $heading-dark-grey;
-        span {
-          background-color: $heading-dark-grey;
-        }
         &:hover {
           background-color: $feature-yellow;
           color: $heading-dark-grey;
-          span {
-            background-color: $heading-dark-grey;
-          }
         }
 
       }
