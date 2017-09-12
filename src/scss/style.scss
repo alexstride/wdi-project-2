@@ -85,8 +85,9 @@ html {
         }
       }
       .navbar-brand .navbar-item {
-        span {
-          background-image: url("../assets/burger.png");
+        font-size: 2rem;
+        img {
+          height: 200%;
         }
       }
       .navbar-brand .navbar-item, .navbar-brand .navbar-burger, .navbar-menu .navbar-start .navbar-item, .navbar-menu .navbar-end .navbar-item {
