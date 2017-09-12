@@ -1,6 +1,5 @@
 const Store = require('../models/store');
 
-//Of the form /stores/:id/comments/:commentId
 function reviewsShow(req, res) {
   Store
     .findById(req.params.id)
@@ -9,6 +8,7 @@ function reviewsShow(req, res) {
     .exec()
     .then(store => {
       const review = store.reviews.id(req.params.reviewId);
+      console.log("Contents of review passed through to page", review);
       res.render('reviews/show', { review, store });
     })
     .catch(err => res.render('error', { err }));
@@ -95,6 +95,21 @@ function reviewsCreateComment(req, res) {
 
 }
 
+function reviewsDeleteComment(req, res) {
+  Store
+    .findById(req.params.id)
+    .exec()
+    .then(store => {
+      req.body.poster = req.currentUser.id;
+      const review = store.reviews.id(req.params.reviewId);
+      const comment = review.comments.id(req.params.commentId);
+      comment.remove();
+      return store.save();
+    })
+    .then(() => res.redirect(`/stores/${req.params.id}/reviews/${req.params.reviewId}`))
+    .catch(err => res.render('error', { err }));
+}
+
 module.exports = {
   show: reviewsShow,
   new: reviewsNew,
@@ -102,5 +117,6 @@ module.exports = {
   edit: reviewsEdit,
   update: reviewsUpdate,
   delete: reviewsDelete,
-  createComment: reviewsCreateComment
+  createComment: reviewsCreateComment,
+  deleteComment: reviewsDeleteComment
 };

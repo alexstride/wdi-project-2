@@ -54,4 +54,8 @@ router.route('/stores/:id/reviews/:reviewId/edit')
 router.route('/stores/:id/reviews/:reviewId/comments')
   .post(secureRoute, reviews.createComment);
 
+router.route('/stores/:id/reviews/:reviewId/comments/:commentId')
+  .delete(secureRoute, reviews.deleteComment);
+
+
 module.exports = router;

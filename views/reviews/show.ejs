@@ -43,7 +43,7 @@
 
 <h4 class="title is-4">Comments</h4>
 
-<% if (review.comments) {
+<% if (review.comments && review.comments.length > 0) {
   review.comments.forEach(comment => { %>
     <article class="media">
       <figure class="media-left">
@@ -59,20 +59,17 @@
             <%= comment.text %>
           </p>
         </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item">
-              <span class="icon is-small"><i class="fa fa-reply"></i></span>
-            </a>
-          </div>
-        </nav>
       </div>
-      <div class="media-right">
-        <form action="/stores/<%= store.id %>/comments/<%= comment.id %>" method="POST">
-          <input type="hidden" name="_method" value="DELETE"/>
-          <button class="delete"></button>
-        </form>
-      </div>
+
+      <% if (locals.currentUser.id === comment.poster.id || locals.currentUser.id === review.user.id) {%>
+        <div class="media-right">
+          <form action="/stores/<%= store.id %>/reviews/<%= review.id %>/comments/<%= comment.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button class="delete"></button>
+          </form>
+        </div>
+      <%}%>
+
     </article>
 
   <% })
