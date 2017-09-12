@@ -8,7 +8,7 @@ const sessions = require('../controllers/sessions');
 const secureRoute = require('../lib/secureRoute');
 
 //HOME
-router.get('/', (req, res) => res.render('home'));
+router.get('/', (req, res) => res.render('home', { isHomepage: true }));
 
 //INDEX
 router.route('/stores')
@@ -49,6 +49,9 @@ router.route('/stores/:id/reviews/:reviewId')
   .delete(reviews.delete);
 
 router.route('/stores/:id/reviews/:reviewId/edit')
-  .get(reviews.edit); ///MAKE THIS INTO A SECURE ROUTE AFTER TESTING!!
+  .get(secureRoute, reviews.edit); ///MAKE THIS INTO A SECURE ROUTE AFTER TESTING!!
+
+router.route('/stores/:id/reviews/:reviewId/comments')
+  .post(secureRoute, reviews.createComment);
 
 module.exports = router;

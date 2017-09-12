@@ -2,6 +2,7 @@ $feature-red: #fc5032;
 $feature-yellow: #ffff63;
 $heading-light-grey: #e6e6e6;
 $heading-dark-grey: #363636;
+$bulma-blue: hsl(217, 71%, 53%);
 
 @keyframes blink {
   0% {
@@ -15,6 +16,10 @@ $heading-dark-grey: #363636;
   }
 }
 
+.review-username {
+  color: $bulma-blue;
+}
+
 // Styles applying to  whole page
 html {
   //begin body styles
@@ -25,6 +30,7 @@ html {
       color: $feature-red;
       font-family: 'Press Start 2P', cursive;
       font-size: 30px;
+      padding-top: 20px;
     }
 
     h2 {
@@ -43,7 +49,7 @@ html {
     }
 
     a {
-      color: $heading-dark-grey;
+      color: $bulma-blue;
     }
 
     div.container {

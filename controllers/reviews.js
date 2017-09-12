@@ -5,6 +5,7 @@ function reviewsShow(req, res) {
   Store
     .findById(req.params.id)
     .populate('reviews.user')
+    .populate('reviews.comments.poster')
     .exec()
     .then(store => {
       const review = store.reviews.id(req.params.reviewId);
@@ -29,6 +30,11 @@ function reviewsCreate(req, res) {
     .findById(req.params.id)
     .exec()
     .then(store => {
+      if(!(req.body.ambienceRating && req.body.customerServiceRating && req.body.foodQualityRating)) {
+        req.flash('danger', 'Please enter valid number values for each of the ratings!');
+        const review = req.body;
+        res.render('reviews/edit', {review, store});
+      }
       store.reviews.push(req.body);
       return store.save();
     })
@@ -73,11 +79,28 @@ function reviewsDelete(req, res) {
     .catch(err => res.render('error', { err }));
 }
 
+function reviewsCreateComment(req, res) {
+  //a post request to /stores/:id/reviews/:reviewId/comments
+  Store
+    .findById(req.params.id)
+    .exec()
+    .then(store => {
+      req.body.poster = req.currentUser.id;
+      const review = store.reviews.id(req.params.reviewId);
+      review.comments.push(req.body);
+      return store.save();
+    })
+    .then(() => res.redirect(`/stores/${req.params.id}/reviews/${req.params.reviewId}`))
+    .catch(err => res.render('error', { err }));
+
+}
+
 module.exports = {
   show: reviewsShow,
   new: reviewsNew,
   create: reviewsCreate,
   edit: reviewsEdit,
   update: reviewsUpdate,
-  delete: reviewsDelete
+  delete: reviewsDelete,
+  createComment: reviewsCreateComment
 };

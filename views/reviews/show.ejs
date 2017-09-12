@@ -1,6 +1,13 @@
 
 <h1 class="title">McDonald's <%=store.locationName %></h1>
-<h2 class="title is-4 review-author">Reviewed by: <strong><%=review.user.username %></strong></h2>
+<h2 class="title is-4 review-author">Reviewed by: <span class="review-username">
+<% if (review.user) {%>
+  <a href="#"><%=review.user.username %></a>
+<%} else { %>
+  Anonymous
+<%}
+%>
+</span></h2>
 
 <div class="columns">
   <div class="column">
@@ -33,3 +40,84 @@
     %>
   </div>
 </div>
+
+<h4 class="title is-4">Comments</h4>
+
+<% if (review.comments) {
+  review.comments.forEach(comment => { %>
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img src="https://placebear.com/128/128">
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong><a href="#"><%= comment.poster.username %></a></strong>
+            <br>
+            <%= comment.text %>
+          </p>
+        </div>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <a class="level-item">
+              <span class="icon is-small"><i class="fa fa-reply"></i></span>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <div class="media-right">
+        <form action="/stores/<%= store.id %>/comments/<%= comment.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE"/>
+          <button class="delete"></button>
+        </form>
+      </div>
+    </article>
+
+  <% })
+} else {%>
+  <div class="level">
+    <div class="level-left">
+      <p>There are no comments to display yet.
+      <% if (!locals.isAuthenticated) {%>
+        <a href="/login"> Sign in</a> to be the first...
+      <%}
+      %>
+      </p>
+    </div>
+  </div>
+<%}
+%>
+
+<% if (locals.isAuthenticated) {%>
+
+  <article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="http://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+    <form  class="comment form" action="/stores/<%= store.id %>/reviews/<%= review.id %>/comments" method="POST">
+      <div class="field">
+        <p class="control">Commenting as <a href="#"><%= locals.currentUser.username %></a></p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <textarea class="textarea" placeholder="Add a comment..." name="text"></textarea>
+        </p>
+      </div>
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <button class="button is-info enforce-center">Submit Comment</button>
+          </div>
+        </div>
+      </nav>
+    </form>
+
+  </div>
+  </article>
+<%}
+%>

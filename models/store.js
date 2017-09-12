@@ -1,11 +1,17 @@
 const mongoose = require('mongoose');
 
+const commentSchema = new mongoose.Schema({
+  poster: { type: mongoose.Schema.ObjectId, ref: 'User'},
+  text: String
+});
+
 const reviewSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.ObjectId, ref: 'User'},
-  ambienceRating: Number,
-  foodQualityRating: Number,
-  customerServiceRating: Number,
-  reviewText: String
+  ambienceRating: {type: Number, required: true},
+  foodQualityRating: {type: Number, required: true},
+  customerServiceRating: {type: Number, required: true},
+  reviewText: String,
+  comments: [ commentSchema ]
 });
 
 const storeSchema = new mongoose.Schema({
