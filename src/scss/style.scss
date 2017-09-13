@@ -79,8 +79,8 @@ html {
     //styling on buttons
     .button {
       border: 3px solid transparent;
-      border-radius: 20px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 18px;
       &.enforce-center {
         flex-direction: column;
       }
@@ -264,11 +264,9 @@ div.review-text {
       //styling on buttons
       .button {
         border: 3px solid transparent;
-        border-radius: 20px;
-        padding: 20px;
       }
       .button-wrapper {
-        margin: 10px 0;
+        margin: 5px 0;
       }
 
       //styles on the hero
