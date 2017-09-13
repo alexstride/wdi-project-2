@@ -3,7 +3,11 @@
 <div class="columns">
   <div class="column is-3-desktop">
     <figure class="image is-128x128">
-      <img src="http://bulma.io/images/placeholders/128x128.png" alt="">
+      <% if (user.photo) {%>
+        <img class="image " src="<%= user.photo %>" alt="<%= user.username %> profile pic">
+      <%} else { %>
+        <img src="http://bulma.io/images/placeholders/128x128.png" alt="Profile picture placeholder">
+      <%} %>
     </figure>
   </div>
     <div class="column is-9-tablet">
@@ -27,7 +31,7 @@
           <div class="field">
             <label class="label">Profile Picture URL (optional)</label>
             <div class="control">
-              <input class="input" name="photo" type="text" value="<%= user.email %>" required>
+              <input class="input" name="photo" type="text" value="<%= user.photo %>">
             </div>
           </div>
 
