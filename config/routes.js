@@ -57,5 +57,8 @@ router.route('/stores/:id/reviews/:reviewId/comments')
 router.route('/stores/:id/reviews/:reviewId/comments/:commentId')
   .delete(secureRoute, reviews.deleteComment);
 
+router.route('/profiles/:id')
+  .get(registrations.show);
+
 
 module.exports = router;

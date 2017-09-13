@@ -35,6 +35,9 @@
         </div>
       <%} else {%>
         <div class="navbar-item">
+          <a href="/profiles/<%= locals.currentUser.id %>">Profile</a>
+        </div>
+        <div class="navbar-item">
           <a href="/logout">Logout</a>
         </div>
       <%}
