@@ -31,8 +31,21 @@ function registrationsShow(req, res) {
   }
 }
 
+function registrationsUpdate(req, res) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then(user => {
+      user = Object.assign(user, req.body);
+      return user.save();
+    })
+    .then(user => res.redirect(`/profiles/${user.id}`))
+    .catch(err => res.render('error', { err }));
+}
+
 module.exports = {
   new: registrationsNew,
   create: registrationsCreate,
-  show: registrationsShow
+  show: registrationsShow,
+  update: registrationsUpdate
 };

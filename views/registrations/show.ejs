@@ -7,9 +7,9 @@
     </figure>
   </div>
     <div class="column is-9-tablet">
-      <% if (locals.currentUser.id === user.id) {%>
-        <form method="POST" action="/implement-this">
-
+      <% if (locals.currentUser && locals.currentUser.id === user.id) {%>
+        <form method="POST" action="/profiles/<%= user.id %>">
+          <input type="hidden" name="_method" value="PUT">
           <div class="field">
             <label class="label">Username</label>
             <div class="control">
