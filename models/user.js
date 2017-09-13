@@ -15,6 +15,12 @@ userSchema
     this._passwordConfirmation = passwordConfirmation;
   });
 
+userSchema
+  .virtual('photoLink')
+  .get(function() {
+    return this.photo || 'https://placebear.com/128/128';
+  });
+
 //lifecycle hooks
 //pre-validation
 userSchema.pre('validate', function checkPasswordConfirmation(next) {

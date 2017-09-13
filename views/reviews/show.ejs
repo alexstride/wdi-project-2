@@ -2,7 +2,7 @@
 <h1 class="title is-size-2-tablet is-size-3-mobile">Review: <a href="/stores/<%=store.id%>">McDonald's <%=store.locationName %></a></h1>
 <h2 class="title is-size-4-tablet is-size-5-mobile review-author">Reviewed by: <span class="review-username">
 <% if (review.user) {%>
-  <a href="#"><%=review.user.username %></a>
+  <a href="/profiles/<%= review.user.id %>"><%=review.user.username %></a>
 <%} else { %>
   Anonymous
 <%}
@@ -56,13 +56,13 @@
     <article class="media">
       <figure class="media-left">
         <p class="image is-64x64">
-          <img src="https://placebear.com/128/128">
+          <img src="<%= comment.poster.photoLink %>" alt="Profile picture">
         </p>
       </figure>
       <div class="media-content">
         <div class="content">
           <p>
-            <strong><a href="#"><%= comment.poster.username %></a></strong>
+            <strong><a href="/profiles/<%= comment.poster.id %>"><%= comment.poster.username %></a></strong>
             <br>
             <%= comment.text %>
           </p>
@@ -100,7 +100,7 @@
   <article class="media">
   <figure class="media-left">
     <p class="image is-64x64">
-      <img src="http://bulma.io/images/placeholders/128x128.png">
+      <img src="<%= locals.currentUser.photoLink %>" alt="Profile picture">
     </p>
   </figure>
   <div class="media-content">
