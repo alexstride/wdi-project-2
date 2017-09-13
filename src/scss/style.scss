@@ -115,15 +115,25 @@ html {
           height: 3rem;
           margin-left: 5px;
         }
-      }
-      .navbar-brand .navbar-item, .navbar-brand .navbar-burger, .navbar-menu .navbar-start .navbar-item, .navbar-menu .navbar-end .navbar-item {
-        color: $heading-dark-grey;
-        border-color: $heading-dark-grey;
+        padding: 1rem !important;
+        vertical-align: bottom;
         &:hover {
           background-color: $feature-yellow;
           color: $heading-dark-grey;
         }
-
+      }
+      .navbar-brand .navbar-item, .navbar-brand .navbar-burger, .navbar-menu .navbar-start .navbar-item, .navbar-menu .navbar-end .navbar-item {
+        padding: 0;
+        color: $heading-dark-grey;
+        border-color: $heading-dark-grey;
+        a {
+          padding: 1rem;
+          vertical-align: bottom;
+          &:hover {
+            background-color: $feature-yellow;
+            color: $heading-dark-grey;
+          }
+        }
       }
     }
 
@@ -136,6 +146,9 @@ html {
       }
     }
     //styles on the hero
+    .hero.is-fullheight {
+      min-height: calc(100vh - 56px);
+    }
     .hero.is-success{
       background-color: $feature-red;
       font-family: 'Press Start 2P', sans-serif;
