@@ -105,9 +105,6 @@ html {
       }
       .navbar-brand {
         height: 3.25rem;
-        .navbar-item {
-
-        }
       }
       .navbar-brand .navbar-item {
         font-size: 2rem;
@@ -222,7 +219,17 @@ div.review-text {
   padding: 20px 0;
 }
 
-
+@media screen and (max-width: 1008px) {
+  html {
+    body {
+      .navbar {
+        .navbar-brand .navbar-item, .navbar-brand .navbar-burger, .navbar-menu .navbar-start .navbar-item, .navbar-menu .navbar-end .navbar-item {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}
 
 @media screen and (max-width: 768px) {
   html {
