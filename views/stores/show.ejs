@@ -1,34 +1,46 @@
 <h1 class="title is-size-1-tablet is-size-4-mobile">McDonalds <%= store.locationName %></h1>
+<% if (store.createdByUser) {%>
+  <p class="title is-6">Restaurant added by: <a href="/profiles/<%= store.createdByUser.id %>"><%= store.createdByUser.username %></a> </p>
+<%}
+%>
 <h4 class="title is-size-4-tablet is-size-5-mobile address"><%= store.address %></h4>
 
-<div class="columns">
-  <div class="button-wrapper column is-3-desktop is-4-tablet">
-    <div class="level">
-      <div class="level-item">
-          <a class="button is-warning feature-button" href="/stores/<%= store.id %>/reviews/new">Review this restaurant</a>
+<% if (store.createdByUser && locals.isAuthenticated && locals.currentUser.id === store.createdByUser.id) {%>
+  <div class="columns">
+    <div class="button-wrapper column is-3-desktop is-4-tablet">
+      <div class="level">
+        <div class="level-item">
+            <a class="button is-warning feature-button" href="/stores/<%= store.id %>/reviews/new">Review this restaurant</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="button-wrapper column is-3-desktop is-4-tablet">
-    <div class="level">
-      <div class="level-item">
-        <a class="button is-info" href="/stores/<%= store.id %>/edit">Edit details</a>
+    <div class="button-wrapper column is-3-desktop is-4-tablet">
+      <div class="level">
+        <div class="level-item">
+          <a class="button is-info" href="/stores/<%= store.id %>/edit">Edit details</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="button-wrapper column is-3-desktop is-4-tablet">
-    <div class="level">
-      <div class="level-item">
-        <form action="/stores/<%= store.id %>" method="POST">
-          <input type="hidden" name="_method" value="DELETE">
-          <button class="button is-dark enforce-center">Delete restaurant</button>
-        </form>
+    <div class="button-wrapper column is-3-desktop is-4-tablet">
+      <div class="level">
+        <div class="level-item">
+          <form action="/stores/<%= store.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="button is-dark enforce-center">Delete restaurant</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<%} else {%>
+  <div class="columns">
+      <a class="column is-8 is-offset-2 button is-warning feature-button" href="/stores/<%= store.id %>/reviews/new">Review this restaurant</a>
+  </div>
+<%}
+%>
+
 
 
 <div class="container reviews-wrapper">

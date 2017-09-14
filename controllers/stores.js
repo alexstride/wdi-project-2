@@ -12,9 +12,11 @@ function storesIndex(req, res) {
 function storesShow(req, res) {
   Store
     .findById(req.params.id)
+    .populate('createdByUser')
     .populate('reviews.user')
     .exec()
     .then(store => {
+      console.log(store);
       if(!store) res.render('error', {err: 'Could not find the record you are looking for'});
       res.render('stores/show', { store });
     })
@@ -26,6 +28,7 @@ function storesNew(req, res) {
 }
 
 function storesCreate(req, res) {
+  req.body.createdByUser = req.currentUser.id;
   Store
     .create(req.body)
     .then(() => res.redirect('/stores'))

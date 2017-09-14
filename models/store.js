@@ -24,7 +24,6 @@ const storeSchema = new mongoose.Schema({
 storeSchema
   .virtual('percentAverage')
   .get(function() {
-    console.log(this);
     const totalPercent = this.reviews
       .map(review => (review.ambienceRating + review.foodQualityRating + review.customerServiceRating)/30 *100)
       .reduce((sum, n) => sum + n, 0);
